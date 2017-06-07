@@ -1,0 +1,11 @@
+#board {
+	height: 80vh;
+	width: 80vw;
+	display: flex;
+	margin: 0 auto;
+	justify-content: center;
+	align-items: center;
+	border: solid black 3px;
+	background-color: blue;
+	box-shadow: 0 5px 10px 5px dimgrey;
+}
