@@ -63,7 +63,20 @@ $(function() {
             ]
         ],
 
+        [
+        	name: "American Psychos",
+        	questions: [
+        		one: "David Burkowitz terrorized New York City from 1976-1977, and is usually referred to by this moniker.",
+        		two: "Known as the 'Green River Killer', this man killed prostitutes and runaways in the Pacific Northwest from 1982-1998.",
+        		three: "The movies 'Psycho' and 'Silence of the Lambs' are loosely based on this real-life killer."
+        	],
+        	answers: [
+        		one: "What is Son of Sam?",
+        		two: "Who is Gary Ridgway?",
+        		three: "Who is Ed Gein?"
+        	]
 
+        ]
 
 
 
