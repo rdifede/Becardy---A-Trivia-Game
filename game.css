@@ -1,31 +1,39 @@
+
 #board {
 	height: 80vh;
 	width: 80vw;
 	display: flex;
-	font-family: 'Orbitron', sans-serif;
+	font-family: 'Cinzel', serif;
 	margin: 0 auto;
 	border: solid black 3px;
 	background-color: blue;
 	box-shadow: 0 5px 10px 5px dimgrey;
 }
 
-.category {
+.modal-container {
+	position: absolute;
+	top: 0;
+	align-items: center;
+}
+
+.category_title {
 	height: 100px;
+	background-color: orange;
+	border: solid black 5px;
+	color: white;
+	display: flex;
+	align-items: center;
+}
+
+.category {
 	width: 150px;
 	display: flex;
 	align-items: center;
     justify-content: center;
-   	flex-direction: row;
     flex-wrap: wrap;
-	background-color: orange;
-	color: white;
 	text-align: center;
 	font-size: 20px;
-	border: solid black 5px;
 	margin: 20px;
-
-	/*margin-bottom: 100px;*/
-
 }
 
 .q {
@@ -33,28 +41,42 @@
 	width: 100px;
    	display: flex;
 	border: solid black 1px;
-	/*margin: 0 auto;*/
-	flex-direction: column;
 	margin-top: 40px;
 	background-color: green;
 	color: gold;
 	align-items: center;
 	justify-content: center;
-/*	justify-content: space-around;*/
-/*	position: relative;*/
 }
 
 .modal {
   display: flex;
-  
+  text-align: center;
+  justify-content: center;
   position: fixed;
-  width: 50vw;
-  height: 50vh;
+  width: 500px;
+  height: 300px;
+  padding: 5px;
   background-color: black;
   color: white;
+  flex-direction: column;
 }
 
 .submit {
-display: block;
+display: inline-flex;
+padding: 5px;
+
+
+
 }
 
+.xOut {
+	display: flex;
+	position: relative;
+	padding: 5px;
+	height: 50px;
+	width: 50px;
+}
+
+input {
+	margin: 10px;
+}
