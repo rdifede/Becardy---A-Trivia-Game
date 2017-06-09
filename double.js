@@ -163,12 +163,11 @@ var checkForWin = function (){
 var checkAnswer = function (q){
 	var input = $("input");
 	if (input.val() === q.a){
-		console.log(input.val());
 		correct.push(q);
 	} else {
 		incorrect.push(q);
 	}
-	console.log(incorrect.length);
+	// console.log(incorrect.length);
 }
 
 
@@ -182,34 +181,34 @@ var createModal = function(q, c) {
         submit.attr("id", "submit");
         submit.text("submit");
         submit.on("click", function(){
-        	modal.remove();
-        	c.off();
-        	checkAnswer(q);
-        	checkForWin();
+            c.off();
+            checkAnswer(q);
+            modal.remove();
+            checkForWin();
+            
         })
-        modal.append(submit);
+        
         
         var input = $("<input>");
         input.attr({
-        	type: "text",
-        	name: "input",
-        	value: ""
+            type: "text",
+            name: "input",
+            value: ""
         })
         modal.append(input);
-        
+        modal.append(submit);
+
         var xOut = $("<button>");
         xOut.attr("id", "x");
         xOut.text("close");
         xOut.click(function(){
-        	modal.remove();
+            modal.remove();
         })
         modal.append(xOut);
 
         modal_container.append(modal);
-        modal.fadeToggle("fast");
-        console.log("clicked");
-
-      console.log(q);  
+        dailyDouble(q);
+        modal.fadeToggle("fast");  
     }
 
 
@@ -235,25 +234,23 @@ gameInfo.forEach(function(name){
 })
 
 console.log(board);
-
-
-
     
 
+var dailyDouble = function (q){ 
+ if (q === gameInfo[2].questions[2]){
+        var double = $("<div>");
+        double.addClass("double");
+        double.text("DAILY DOUBLE!");
+        var go = $("<button>");
+        go.text("Ready?");
+        go.on("click", function(){
+            double.remove();
+        })
+        double.append(go);
+        modal_container.append(double);
+}
 
-    //     var chooseQuestion = function (){
-    //     	modal1.click(function(){
-    //     	createModal();
-
-    //     	})
-
-    //  createBoard();   	
-    // // console.log(chooseQuestion());
-
-    //     };
-
-
-
+}
 
 
 

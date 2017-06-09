@@ -133,6 +133,7 @@ var checkForWin = function (){
 	var sum = (correct.length + incorrect.length);
 	if (sum === 15){
 		if (correct.length > incorrect.length){
+			console.log(correct.length);
 			var win = $("<div>");
 			win.addClass("modal");
 			win.text("Nice job! You answered " + correct.length + "/15 questions correct! Are you ready for Double Jeopardy?");
@@ -142,17 +143,16 @@ var checkForWin = function (){
 			dj.text("Let's Go!");
 			win.append(dj);
 			modal_container.append(win);
-			win.toggle();
 		} else {
 			var lose = $("<div>");
 			lose.addClass("modal");
 			lose.text("Oh no! You only answered " + correct.length +"/15 questions correct. Want to try again?");
 			var tryAgain = $("<button>");
 			tryAgain.attr("a", "./game.html");
+			tryAgain.css("text-decoration", "none");
 			tryAgain.text("Try Again!");
 			lose.append(tryAgain);
 			modal_container.append(lose);
-			lose.toggle();
 		}
 	} 
 }
@@ -179,12 +179,13 @@ var createModal = function(q, c) {
         submit.attr("id", "submit");
         submit.text("submit");
         submit.on("click", function(){
-        	modal.remove();
         	c.off();
         	checkAnswer(q);
+        	modal.remove();
         	checkForWin();
+        	
         })
-        modal.append(submit);
+        
         
         var input = $("<input>");
         input.attr({
@@ -193,7 +194,8 @@ var createModal = function(q, c) {
         	value: ""
         })
         modal.append(input);
-        
+        modal.append(submit);
+
         var xOut = $("<button>");
         xOut.attr("id", "x");
         xOut.text("close");
@@ -203,10 +205,8 @@ var createModal = function(q, c) {
         modal.append(xOut);
 
         modal_container.append(modal);
-        modal.fadeToggle("fast");
-        console.log("clicked");
-
-      console.log(q);  
+        dailyDouble(q);
+        modal.fadeToggle("fast");  
     }
 
 
@@ -234,21 +234,27 @@ gameInfo.forEach(function(name){
 console.log(board);
 
 
+var dailyDouble = function (q){ 
+ if (q === gameInfo[3].questions[1]){
+		var double = $("<div>");
+		double.css("transform", "rotate(360deg)");
+		double.addClass("double");
+		double.text("DAILY DOUBLE!");
+		var go = $("<button>");
+		go.text("Ready?");
+		go.on("click", function(){
+			double.remove();
+		})
+		double.append(go);
+		modal_container.append(double);
+
+}
+
+}
+
+
 
     
-
-
-    //     var chooseQuestion = function (){
-    //     	modal1.click(function(){
-    //     	createModal();
-
-    //     	})
-
-    //  createBoard();   	
-    // // console.log(chooseQuestion());
-
-    //     };
-
 
 
 
