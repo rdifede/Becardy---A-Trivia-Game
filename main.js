@@ -129,9 +129,6 @@ $(function() {
     var incorrect = [];
 
 
-
-
-
 var checkForWin = function (){
 	var sum = (correct.length + incorrect.length);
 	if (sum === 15){
@@ -161,14 +158,14 @@ var checkForWin = function (){
 }
 
 var checkAnswer = function (q){
-	var input = $("input");
-	if (input.val() === q.a){
-		console.log(input.val());
+	var input = $("input").val();
+	if (input === q.a){
 		correct.push(q);
 	} else {
 		incorrect.push(q);
 	}
 	console.log(incorrect.length);
+	console.log(input);
 }
 
 
@@ -199,7 +196,7 @@ var createModal = function(q, c) {
         
         var xOut = $("<button>");
         xOut.attr("id", "x");
-        xOut.text("x");
+        xOut.text("close");
         xOut.click(function(){
         	modal.remove();
         })

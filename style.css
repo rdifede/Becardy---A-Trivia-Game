@@ -2,21 +2,45 @@ body {
 	font-family: 'Cinzel', serif;
 	background-color: blue;
 	color: gold;
+	margin: 5px;
+	/*display: flex;
+	justify-content: center;
+	align-items: center;*/
 }
 
 h1 {
 	text-align: center;
+	margin: 0;
+	font-size: 50px;
 }
 
 h2 {
 	text-align: center;
+	margin: 30px;
 }
 
 a {
 	text-decoration: none;
+	color: black;
 }
 
 #start {
 	display: block;
 	margin: 0 auto;
+	font-family: 'Cinzel', serif;
+	font-size: 20px;
+	height: 80px;
+	width: 180px;
+	text-decoration: none;
+}
+
+#how-to {
+	display: block;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	font-family: 'Cinzel', serif;
+	font-size: 20px;
+	height: 80px;
+	width: 180px;
+	text-decoration: none;
 }
