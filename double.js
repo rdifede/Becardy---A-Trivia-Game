@@ -5,8 +5,7 @@ $(function() {
 
         {
             category: "Broadway Musicals",
-            questions: [
-            	{
+            questions: [{
                     q: "This hit musical features a young girl trying to be one of the 'nicest kids in town'.",
                     a: "What is Hairspray?",
                     p: "$600"
@@ -19,8 +18,8 @@ $(function() {
                 },
 
                 {
-                    q: "It takes two! In RENT, Mark & Joanne sing a duet this duet, named after their mutual lover.",
-                    a: "What is 'The Tango Maureen'?",
+                    q: "It takes two! In RENT, Mark & Joanne sing this duet, named after their mutual lover.",
+                    a: "What is the Tango Maureen?",
                     p: "$1000"
                 }
             ]
@@ -132,63 +131,63 @@ $(function() {
 
 
 
-var checkForWin = function (){
-	var sum = (correct.length + incorrect.length);
-	if (sum === 15){
-		if (correct.length > incorrect.length){
-			var win = $("<div>");
-			win.addClass("modal");
-			win.text("Nice job! You answered " + correct.length + "/15 questions correct! Are you ready for Double Jeopardy?");
-			var dj = $("<button>");
-			dj.attr("a", "#");
-			dj.css("text-decoration", "none");
-			dj.text("Let's Go!");
-			win.append(dj);
-			modal_container.append(win);
-			win.toggle();
-		} else {
-			var lose = $("<div>");
-			lose.addClass("modal");
-			lose.text("Oh no! You only answered " + correct.length +"/15 questions correct. Want to try again?");
-			var tryAgain = $("<button>");
-			tryAgain.attr("a", "./game.html");
-			tryAgain.text("Try Again!");
-			lose.append(tryAgain);
-			modal_container.append(lose);
-			lose.toggle();
-		}
-	} 
-}
+    var checkForWin = function() {
+        var sum = (correct.length + incorrect.length);
+        if (sum === 15) {
+            if (correct.length > incorrect.length) {
+                var win = $("<div>");
+                win.addClass("modal");
+                win.text("Nice job! You answered " + correct.length + "/15 questions correct! Are you ready for Final Becardy?");
+                var dj = $("<button>");
+                dj.attr("a", "./final.html");
+                dj.css("text-decoration", "none");
+                dj.text("Let's Go!");
+                win.append(dj);
+                modal_container.append(win);
+                win.toggle();
+            } else {
+                var lose = $("<div>");
+                lose.addClass("modal");
+                lose.text("Oh no! You only answered " + correct.length + "/15 questions correct. Want to try again?");
+                var tryAgain = $("<button>");
+                tryAgain.attr("a", "./game.html");
+                tryAgain.text("Try Again!");
+                lose.append(tryAgain);
+                modal_container.append(lose);
+                lose.toggle();
+            }
+        }
+    }
 
-var checkAnswer = function (q){
-	var input = $("input");
-	if (input.val() === q.a){
-		correct.push(q);
-	} else {
-		incorrect.push(q);
-	}
-	// console.log(incorrect.length);
-}
+    var checkAnswer = function(q) {
+        var input = $("input");
+        if (input.val() === q.a) {
+            correct.push(q);
+        } else {
+            incorrect.push(q);
+        }
+        // console.log(incorrect.length);
+    }
 
 
-var createModal = function(q, c) {
+    var createModal = function(q, c) {
         var modal = $("<div>");
         modal.addClass("modal");
         modal.text(q.q);
-        modal.css("display","none");
-        
+        modal.css("display", "none");
+
         var submit = $("<button>");
         submit.attr("id", "submit");
         submit.text("submit");
-        submit.on("click", function(){
+        submit.on("click", function() {
             c.off();
             checkAnswer(q);
             modal.remove();
             checkForWin();
-            
+
         })
-        
-        
+
+
         var input = $("<input>");
         input.attr({
             type: "text",
@@ -201,56 +200,60 @@ var createModal = function(q, c) {
         var xOut = $("<button>");
         xOut.attr("id", "x");
         xOut.text("close");
-        xOut.click(function(){
+        xOut.click(function() {
             modal.remove();
         })
         modal.append(xOut);
 
         modal_container.append(modal);
         dailyDouble(q);
-        modal.fadeToggle("fast");  
+        modal.fadeToggle("fast");
     }
 
 
 
 
-gameInfo.forEach(function(name){
-	var rowDiv = $("<div>");
-	rowDiv.addClass("category");
-	var title = $("<div>");
-	title.addClass("category_title");
-	title.text(name.category);
-	rowDiv.append(title);
-	board.append(rowDiv);
-		name.questions.forEach(function(question){
-			var cellDiv = $("<div>");
-			cellDiv.addClass("q");
-			cellDiv.text(question.p);
-			cellDiv.on("click",function(){
-				createModal(question,cellDiv);
-			});
-			rowDiv.append(cellDiv);
-		})
-})
-
-console.log(board);
-    
-
-var dailyDouble = function (q){ 
- if (q === gameInfo[2].questions[2]){
-        var double = $("<div>");
-        double.addClass("double");
-        double.text("DAILY DOUBLE!");
-        var go = $("<button>");
-        go.text("Ready?");
-        go.on("click", function(){
-            double.remove();
+    gameInfo.forEach(function(name) {
+        var rowDiv = $("<div>");
+        rowDiv.addClass("category");
+        var title = $("<div>");
+        title.addClass("category_title");
+        title.text(name.category);
+        rowDiv.append(title);
+        board.append(rowDiv);
+        name.questions.forEach(function(question) {
+            var cellDiv = $("<div>");
+            cellDiv.addClass("q");
+            cellDiv.text(question.p);
+            cellDiv.on("click", function() {
+                createModal(question, cellDiv);
+            });
+            rowDiv.append(cellDiv);
         })
-        double.append(go);
-        modal_container.append(double);
-}
+    })
 
-}
+    console.log(board);
+
+
+    var dailyDouble = function(q) {
+        if (q === gameInfo[2].questions[2]) {
+            var double = $("<div>");
+            double.animate({
+            height: "400px",
+            width: "600px",
+            }, 'fast');
+            double.addClass("double");
+            double.text("DAILY DOUBLE!");
+            var go = $("<button>");
+            go.text("Ready?");
+            go.on("click", function() {
+                double.remove();
+            })
+            double.append(go);
+            modal_container.append(double);
+        }
+
+    }
 
 
 

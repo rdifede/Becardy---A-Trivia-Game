@@ -136,9 +136,9 @@ var checkForWin = function (){
 			console.log(correct.length);
 			var win = $("<div>");
 			win.addClass("modal");
-			win.text("Nice job! You answered " + correct.length + "/15 questions correct! Are you ready for Double Jeopardy?");
+			win.text("Nice job! You answered " + correct.length + "/15 questions correct! Are you ready for Double Becardy?");
 			var dj = $("<button>");
-			dj.attr("a", "#");
+			dj.attr("a", "./double.html");
 			dj.css("text-decoration", "none");
 			dj.text("Let's Go!");
 			win.append(dj);
@@ -164,8 +164,9 @@ var checkAnswer = function (q){
 	} else {
 		incorrect.push(q);
 	}
-	console.log(incorrect.length);
-	console.log(input);
+	// console.log(incorrect.length);
+// console.log(input);
+
 }
 
 
@@ -237,7 +238,10 @@ console.log(board);
 var dailyDouble = function (q){ 
  if (q === gameInfo[3].questions[1]){
 		var double = $("<div>");
-		double.css("transform", "rotate(360deg)");
+		double.animate({
+      	height: "400px",
+      	width: "600px",
+    	}, 'fast');
 		double.addClass("double");
 		double.text("DAILY DOUBLE!");
 		var go = $("<button>");

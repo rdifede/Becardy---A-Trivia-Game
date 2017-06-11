@@ -22,21 +22,20 @@ a {
 }
 
 ol {
-	display: block;
-	font-size: 25px;
-	align-items: center;
-	font-weight: bold;
+    display: block;
+    font-size: 25px;
+    align-items: center;
+    font-weight: bold;
 }
 
 li {
-	padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 p {
-	text-align: center;
-	font-size: 40px;
-	font-weight: bold;
-
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
 }
 
 #start {
@@ -67,11 +66,4 @@ p {
     width: 70px;
     text-decoration: none;
     color: black;
- }
-
-
-
-
-
-
-
+}
