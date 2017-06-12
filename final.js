@@ -47,28 +47,30 @@ $(function() {
 
     var checkForWin = function() {
         var sum = (correct.length + incorrect.length);
-        if (sum === 3) {
+        if (sum === 1) {
             if (correct.length > incorrect.length) {
                 var win = $("<div>");
                 win.addClass("modal");
                 win.text("Congratulations! You are the Becardy Champion!");
-                var back = $("<button>");
-                back.attr("a", "./index.html");
+                var goBack = $("<button>");
+                var back = $("a");
+                back.attr("href", "./index.html");
                 back.css("text-decoration", "none");
                 back.text("Want to play again?");
-                win.append(back);
+                goBack.append(back);
+                win.append(goBack);
                 modal_container.append(win);
-                win.toggle();
             } else {
                 var lose = $("<div>");
                 lose.addClass("modal");
                 lose.text("Oh no! You were so close.");
-                var tryAgain = $("<button>");
-                tryAgain.attr("a", "./final.html");
+                var again = $("<button>");
+                var tryAgain = $("a");
+                tryAgain.attr("href", "./final.html");
                 tryAgain.text("Try Again!");
-                lose.append(tryAgain);
+                again.append(tryAgain);
+                lose.append(again);
                 modal_container.append(lose);
-                lose.toggle();
             }
         }
     }
@@ -96,6 +98,7 @@ $(function() {
         submit.on("click", function() {
             c.off();
             checkAnswer(q);
+            $("#jeopardy").get(0).pause();
             modal.remove();
             checkForWin();
 
@@ -125,12 +128,7 @@ $(function() {
 
 
 
-   var audio = function (){
-   	var music = ("<embed>");
-   	music.attr("src", "./jeopardy-theme-song.mp3");
-   	$(this).play();
-
-   }
+  
 
     final.forEach(function(name) {
         var rowDiv = $("<div>");
@@ -144,7 +142,7 @@ $(function() {
 
             rowDiv.on("click", function() {
                 createModal(question, rowDiv);
-                audio();
+                $("#jeopardy").get(0).play();
 
             });
         })

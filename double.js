@@ -133,28 +133,31 @@ $(function() {
 
     var checkForWin = function() {
         var sum = (correct.length + incorrect.length);
-        if (sum === 15) {
+        if (sum === 2) {
             if (correct.length > incorrect.length) {
                 var win = $("<div>");
                 win.addClass("modal");
                 win.text("Nice job! You answered " + correct.length + "/15 questions correct! Are you ready for Final Becardy?");
-                var dj = $("<button>");
-                dj.attr("a", "./final.html");
-                dj.css("text-decoration", "none");
-                dj.text("Let's Go!");
-                win.append(dj);
+                var final = $("<button>");
+                var finalLink = $("a");
+                finalLink.attr("href", "./final.html");
+                finalLink.css("text-decoration", "none");
+                finalLink.text("Let's Go!");
+                final.append(finalLink);
+                win.append(final);
                 modal_container.append(win);
-                win.toggle();
             } else {
                 var lose = $("<div>");
                 lose.addClass("modal");
                 lose.text("Oh no! You only answered " + correct.length + "/15 questions correct. Want to try again?");
-                var tryAgain = $("<button>");
-                tryAgain.attr("a", "./game.html");
+                var again = $("<button>");
+                var tryAgain = $("a");
+                tryAgain.attr("href", "./double.html");
+                tryAgain.css("text-decoration", "none");
                 tryAgain.text("Try Again!");
-                lose.append(tryAgain);
+                again.append(tryAgain);
+                lose.append(again);
                 modal_container.append(lose);
-                lose.toggle();
             }
         }
     }
@@ -166,7 +169,6 @@ $(function() {
         } else {
             incorrect.push(q);
         }
-        // console.log(incorrect.length);
     }
 
 
@@ -232,11 +234,10 @@ $(function() {
         })
     })
 
-    console.log(board);
 
 
     var dailyDouble = function(q) {
-        if (q === gameInfo[2].questions[2]) {
+        if (q === gameInfo[2].questions[2] || q === gameInfo[1].questions[1]) {
             var double = $("<div>");
             double.animate({
             height: "400px",

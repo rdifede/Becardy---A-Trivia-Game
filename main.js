@@ -7,19 +7,19 @@ $(function() {
             category: "Potent Potables",
             questions: [
             	{
-                    q: "First brewed in Mexico in 1897, this beer is best known for its commercials, which feature a rather intriguing, worldly gentleman",
+                    q: "First brewed in Mexico in 1897, this beer is best known for its commercials, which feature a rather intriguing, worldly gentleman.",
                     a: "What is Dos Equis?",
                     p: "$200"
                 },
 
                 {
-                    q: "A 'White Russian' consists of 2 parts vodka, 1 part fresh cream, and 1 part this",
+                    q: "A 'White Russian' consists of 2 parts vodka, 1 part fresh cream, and 1 part this.",
                     a: "What is coffee liquer?",
                     p: "$400"
                 },
 
                 {
-                    q: "Once popular in the 1950's, this 'light liquor alternative', is making a comeback, with people all over Instagram posing with their #spritz",
+                    q: "Once popular in the 1950's, this 'light liquor alternative', is making a comeback, with people all over Instagram posing with their #spritz.",
                     a: "What is Aperol?",
                     p: "$600"
                 }
@@ -84,7 +84,7 @@ $(function() {
                 },
 
                 {
-                    q: "A staple in most woodshops, this type of sander consists of a revolving strip of abrasive that is used to smooth out and shape the edges of a project",
+                    q: "A staple in most woodshops, this type of sander consists of a revolving strip of abrasive that is used to smooth out and shape the edges of a project.",
                     a: "What is a belt sander?",
                     p: "$400"
                 },
@@ -138,20 +138,24 @@ var checkForWin = function (){
 			win.addClass("modal");
 			win.text("Nice job! You answered " + correct.length + "/15 questions correct! Are you ready for Double Becardy?");
 			var dj = $("<button>");
-			dj.attr("a", "./double.html");
-			dj.css("text-decoration", "none");
-			dj.text("Let's Go!");
+			var djLink = $("a");
+			djLink.attr("href", "./double.html");
+			djLink.css("text-decoration", "none");
+			djLink.text("Let's Go!");
+			dj.append(djLink);
 			win.append(dj);
 			modal_container.append(win);
 		} else {
 			var lose = $("<div>");
 			lose.addClass("modal");
-			lose.text("Oh no! You only answered " + correct.length +"/15 questions correct. Want to try again?");
-			var tryAgain = $("<button>");
-			tryAgain.attr("a", "./game.html");
+			lose.text("Oh no! You only answered " + correct.length + "/15 questions correct. Want to try again?");
+			var again = $("<button>");
+			var tryAgain = $("a");
+			tryAgain.attr("href", "./game.html");
 			tryAgain.css("text-decoration", "none");
 			tryAgain.text("Try Again!");
-			lose.append(tryAgain);
+			again.append(tryAgain);
+			lose.append(again);
 			modal_container.append(lose);
 		}
 	} 
