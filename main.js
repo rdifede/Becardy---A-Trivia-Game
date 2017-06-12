@@ -1,12 +1,13 @@
 $(function() {
     console.log("connected");
 
+    //Game Categories, Questions and Dollar Values
+
     var gameInfo = [
 
         {
             category: "Potent Potables",
-            questions: [
-            	{
+            questions: [{
                     q: "First brewed in Mexico in 1897, this beer is best known for its commercials, which feature a rather intriguing, worldly gentleman.",
                     a: "What is Dos Equis?",
                     p: "$200"
@@ -122,81 +123,88 @@ $(function() {
 
     ]
 
+    //Global Variables - variables I need to use more than once in multiple places
+
     var body = $("body");
     var board = $("#board");
     var modal_container = $(".modal-container");
     var correct = [];
     var incorrect = [];
 
+    /*/This function, fired inside the createModal function by the submit button,
+    checks to see if all of the questions have been answered, and if so, the conditional checks if you've won or lost/*/
 
-var checkForWin = function (){
-	var sum = (correct.length + incorrect.length);
-	if (sum === 15){
-		if (correct.length > incorrect.length){
-			console.log(correct.length);
-			var win = $("<div>");
-			win.addClass("modal");
-			win.text("Nice job! You answered " + correct.length + "/15 questions correct! Are you ready for Double Becardy?");
-			var dj = $("<button>");
-			var djLink = $("a");
-			djLink.attr("href", "./double.html");
-			djLink.css("text-decoration", "none");
-			djLink.text("Let's Go!");
-			dj.append(djLink);
-			win.append(dj);
-			modal_container.append(win);
-		} else {
-			var lose = $("<div>");
-			lose.addClass("modal");
-			lose.text("Oh no! You only answered " + correct.length + "/15 questions correct. Want to try again?");
-			var again = $("<button>");
-			var tryAgain = $("a");
-			tryAgain.attr("href", "./game.html");
-			tryAgain.css("text-decoration", "none");
-			tryAgain.text("Try Again!");
-			again.append(tryAgain);
-			lose.append(again);
-			modal_container.append(lose);
-		}
-	} 
-}
+    var checkForWin = function() {
+        var sum = (correct.length + incorrect.length);
+        if (sum === 15) {
+            if (correct.length > incorrect.length) {
+                console.log(correct.length);
+                var win = $("<div>");
+                win.addClass("modal");
+                win.text("Nice job! You answered " + correct.length + "/15 questions correct! Are you ready for Double Becardy?");
+                var dj = $("<button>");
+                var djLink = $("a");
+                djLink.attr("href", "./double.html");
+                djLink.css("text-decoration", "none");
+                djLink.text("Let's Go!");
+                dj.append(djLink);
+                win.append(dj);
+                modal_container.append(win);
+            } else {
+                var lose = $("<div>");
+                lose.addClass("modal");
+                lose.text("Oh no! You only answered " + correct.length + "/15 questions correct. Want to try again?");
+                var again = $("<button>");
+                var tryAgain = $("a");
+                tryAgain.attr("href", "./game.html");
+                tryAgain.css("text-decoration", "none");
+                tryAgain.text("Try Again!");
+                again.append(tryAgain);
+                lose.append(again);
+                modal_container.append(lose);
+            }
+        }
+    }
 
-var checkAnswer = function (q){
-	var input = $("input").val();
-	if (input === q.a){
-		correct.push(q);
-	} else {
-		incorrect.push(q);
-	}
-	// console.log(incorrect.length);
-// console.log(input);
+    /*/This function, fired inside the createModal function by the submit button, checks to see if the 
+    answer entered is correct by comparing it to the information in the array /*/
 
-}
+    var checkAnswer = function(q) {
+        var input = $("input").val();
+        if (input === q.a) {
+            correct.push(q);
+        } else {
+            incorrect.push(q);
+        }
 
+    }
 
-var createModal = function(q, c) {
+/*/This function creates all the modals! It takes two parameters, the question and the cell 
+clicked on by the user. It calls the checkAnswer, checkForWin, and dailyDouble functions within it./*/
+
+    var createModal = function(q, c) {
         var modal = $("<div>");
         modal.addClass("modal");
         modal.text(q.q);
-        modal.css("display","none");
-        
+        modal.css("display", "none");
+
         var submit = $("<button>");
         submit.attr("id", "submit");
         submit.text("submit");
-        submit.on("click", function(){
-        	c.off();
-        	checkAnswer(q);
-        	modal.remove();
-        	checkForWin();
-        	
+        submit.on("click", function() {
+            c.off();
+            checkAnswer(q);
+            modal.remove();
+            checkForWin();
+
         })
-        
-        
+
+
         var input = $("<input>");
         input.attr({
-        	type: "text",
-        	name: "input",
-        	value: ""
+            type: "text",
+            name: "input",
+            value: ""
         })
         modal.append(input);
         modal.append(submit);
@@ -204,65 +212,65 @@ var createModal = function(q, c) {
         var xOut = $("<button>");
         xOut.attr("id", "x");
         xOut.text("close");
-        xOut.click(function(){
-        	modal.remove();
+        xOut.click(function() {
+            modal.remove();
         })
         modal.append(xOut);
 
         modal_container.append(modal);
         dailyDouble(q);
-        modal.fadeToggle("fast");  
+        modal.fadeToggle("fast");
+    }
+
+
+//This function creates my game board!
+
+    gameInfo.forEach(function(name) {
+        var rowDiv = $("<div>");
+        rowDiv.addClass("category");
+        var title = $("<div>");
+        title.addClass("category_title");
+        title.text(name.category);
+        rowDiv.append(title);
+        board.append(rowDiv);
+        name.questions.forEach(function(question) {
+            var cellDiv = $("<div>");
+            cellDiv.addClass("q");
+            cellDiv.text(question.p);
+            cellDiv.on("click", function() {
+                createModal(question, cellDiv);
+            });
+            rowDiv.append(cellDiv);
+        })
+    })
+
+   
+// This function creates a Daily Double modal for the questions designated as Daily Doubles!
+
+    var dailyDouble = function(q) {
+        if (q === gameInfo[3].questions[1]) {
+            var double = $("<div>");
+            double.animate({
+                height: "400px",
+                width: "600px",
+            }, 'fast');
+            double.addClass("double");
+            double.text("DAILY DOUBLE!");
+            var go = $("<button>");
+            go.text("Ready?");
+            go.on("click", function() {
+                double.remove();
+            })
+            double.append(go);
+            modal_container.append(double);
+
+        }
+
     }
 
 
 
 
-gameInfo.forEach(function(name){
-	var rowDiv = $("<div>");
-	rowDiv.addClass("category");
-	var title = $("<div>");
-	title.addClass("category_title");
-	title.text(name.category);
-	rowDiv.append(title);
-	board.append(rowDiv);
-		name.questions.forEach(function(question){
-			var cellDiv = $("<div>");
-			cellDiv.addClass("q");
-			cellDiv.text(question.p);
-			cellDiv.on("click",function(){
-				createModal(question,cellDiv);
-			});
-			rowDiv.append(cellDiv);
-		})
-})
-
-console.log(board);
-
-
-var dailyDouble = function (q){ 
- if (q === gameInfo[3].questions[1]){
-		var double = $("<div>");
-		double.animate({
-      	height: "400px",
-      	width: "600px",
-    	}, 'fast');
-		double.addClass("double");
-		double.text("DAILY DOUBLE!");
-		var go = $("<button>");
-		go.text("Ready?");
-		go.on("click", function(){
-			double.remove();
-		})
-		double.append(go);
-		modal_container.append(double);
-
-}
-
-}
-
-
-
-    
 
 
 
