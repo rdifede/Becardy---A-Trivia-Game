@@ -133,7 +133,7 @@ $(function() {
 
     var checkForWin = function() {
         var sum = (correct.length + incorrect.length);
-        if (sum === 2) {
+        if (sum === 15) {
             if (correct.length > incorrect.length) {
                 var win = $("<div>");
                 win.addClass("modal");
