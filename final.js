@@ -4,9 +4,9 @@ $(function() {
     var final = [
 
         {
-            category: "Famous Last words",
+            category: "Famous Last Words",
             question: [{
-                q: "Tell your sister, you were right.",
+                q: "'Tell your sister, you were right.'",
                 a: "Who is Darth Vader?"
             }]
 
@@ -22,9 +22,9 @@ $(function() {
         },
 
         {
-            category: "Emo Songs",
+            category: "Emo Forever",
             question: [{
-                q: "Vindicated, I am selfish I am wrong. I am right, I swear I'm right. Swear I knew it all along.",
+                q: "'Vindicated, I am selfish I am wrong. I am right, I swear I'm right. Swear I knew it all along.'",
                 a: "Who is Dashboard Confessional?"
             }]
 
@@ -52,6 +52,8 @@ $(function() {
                 var win = $("<div>");
                 win.addClass("modal");
                 win.text("Congratulations! You are the Becardy Champion!");
+                win.css("color", "mediumspringgreen");
+                win.css("font-size", "45px");
                 var goBack = $("<button>");
                 var back = $("a");
                 back.attr("href", "./index.html");
