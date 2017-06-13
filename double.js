@@ -1,6 +1,8 @@
 $(function() {
     console.log("connected");
 
+    //Game Categories, Questions and Dollar Values
+
     var gameInfo = [
 
         {
@@ -121,6 +123,9 @@ $(function() {
 
     ]
 
+
+    //Global Variables - variables I need to use more than once in multiple places
+
     var body = $("body");
     var board = $("#board");
     var modal_container = $(".modal-container");
@@ -129,7 +134,8 @@ $(function() {
 
 
 
-
+ /*/This function, fired inside the createModal function by the submit button,
+    checks to see if all of the questions have been answered, and if so, the conditional checks if you've won or lost/*/
 
     var checkForWin = function() {
         var sum = (correct.length + incorrect.length);
@@ -162,6 +168,10 @@ $(function() {
         }
     }
 
+
+/*/This function, fired inside the createModal function by the submit button, checks to see if the 
+    answer entered is correct by comparing it to the information in the array /*/
+
     var checkAnswer = function(q) {
         var input = $("input");
         if (input.val() === q.a) {
@@ -171,6 +181,10 @@ $(function() {
         }
     }
 
+
+
+/*/This function creates all the modals! It takes two parameters, the question and the cell 
+clicked on by the user. It calls the checkAnswer, checkForWin, and dailyDouble functions within it./*/
 
     var createModal = function(q, c) {
         var modal = $("<div>");
@@ -214,6 +228,7 @@ $(function() {
 
 
 
+//This function creates my game board!
 
     gameInfo.forEach(function(name) {
         var rowDiv = $("<div>");
@@ -234,7 +249,7 @@ $(function() {
         })
     })
 
-
+// This function creates a Daily Double modal for the questions designated as Daily Doubles!
 
     var dailyDouble = function(q) {
         if (q === gameInfo[2].questions[2] || q === gameInfo[1].questions[1]) {
