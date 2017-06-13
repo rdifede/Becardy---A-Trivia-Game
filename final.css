@@ -34,7 +34,7 @@ input {
     top: 0;
     align-items: center;
     font-family: 'Cinzel', serif;
-    font-size: 30px;
+    font-size: 25px;
     margin-left: 350px;
 }
 
@@ -66,7 +66,8 @@ input {
     justify-content: center;
     width: 500px;
     height: 300px;
-    padding: 5px;
+    padding: 15px;
+    margin-top: 20px;
     background-color: #424040;
     color: oldlace;
     flex-direction: column;

@@ -247,6 +247,7 @@ clicked on by the user. It calls the checkAnswer, checkForWin, and dailyDouble f
    
 // This function creates a Daily Double modal for the questions designated as Daily Doubles!
 
+
     var dailyDouble = function(q) {
         if (q === gameInfo[3].questions[1]) {
             var double = $("<div>");
