@@ -1,5 +1,5 @@
 # Becardy---A-Trivia-Game
-## My first project as a student with General Assembly. The assignment was to create a game, so I chose to model mine after my favorite game show, Jeopardy!
+## [My first project](https://rdifede.github.io/Becardy---A-Trivia-Game/) as a student with General Assembly. The assignment was to create a game, so I chose to model mine after my favorite game show, Jeopardy!
 
 ### Approach:
 My approach for this game was to create an interactive trivia game with a smooth user experience to make for an enjoyable game, and paying tribute to classic Jeopardy without simply creating a copy.  

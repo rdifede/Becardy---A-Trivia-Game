@@ -35,7 +35,7 @@ $(function() {
 
     ]
 
-//Global Variables - variables I need to use more than once in multiple places
+    //Global Variables - variables I need to use more than once in multiple places
 
     var body = $("body");
     var board = $("#board");
@@ -44,8 +44,8 @@ $(function() {
     var incorrect = [];
 
 
-/*/This function, fired inside the createModal function by the submit button,
-    checks to see if all of the questions have been answered, and if so, the conditional checks if you've won or lost/*/
+    /*/This function, fired inside the createModal function by the submit button,
+        checks to see if all of the questions have been answered, and if so, the conditional checks if you've won or lost/*/
 
 
     var checkForWin = function() {
@@ -81,8 +81,8 @@ $(function() {
     }
 
 
-/*/This function, fired inside the createModal function by the submit button, checks to see if the 
-    answer entered is correct by comparing it to the information in the array /*/
+    /*/This function, fired inside the createModal function by the submit button, checks to see if the 
+        answer entered is correct by comparing it to the information in the array /*/
 
     var checkAnswer = function(q) {
         var input = $("input");
@@ -95,8 +95,8 @@ $(function() {
     }
 
 
-/*/This function creates all the modals! It takes two parameters, the question and the cell 
-clicked on by the user. It calls the checkAnswer, checkForWin, and dailyDouble functions within it./*/
+    /*/This function creates all the modals! It takes two parameters, the question and the cell 
+    clicked on by the user. It calls the checkAnswer, checkForWin, and dailyDouble functions within it./*/
 
     var createModal = function(q, c) {
         var modal = $("<div>");
@@ -139,8 +139,8 @@ clicked on by the user. It calls the checkAnswer, checkForWin, and dailyDouble f
     }
 
 
-//This function creates my game board!
-  
+    //This function creates my game board!
+
 
     final.forEach(function(name) {
         var rowDiv = $("<div>");
