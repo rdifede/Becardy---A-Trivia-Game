@@ -18,7 +18,7 @@ $(function() {
             category: "Name That Game",
             question: [{
                 q: "'It's a zany action, it's a crazy contraption, the fun is catching, its' this board game.",
-                a: "What is Mousetrap?"
+                a: "What is Mouse Trap?"
             }]
 
         },

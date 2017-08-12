@@ -106,7 +106,7 @@ $(function() {
                     a: "Who is Marie Curie?",
                     p: "$600"
                 }, {
-                    q: "Self described herself as a ’black, lesbian, mother, warrior, poet’, she published nearly 20 pieces of literature, all themed around her myriad of life experiences.",
+                    q: "Self described as a ’black, lesbian, mother, warrior, poet’, she published nearly 20 pieces of literature, all themed around her myriad of life experiences.",
                     a: "Who is Audre Lorde?",
                     p: "$800"
                 },
